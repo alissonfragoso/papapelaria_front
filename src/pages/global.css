@@ -19,4 +19,18 @@
     width: 80%;
     background-color:#ffff;
     margin: 5px;
+    padding: 5px;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+td{
+    border:  solid 0.5px #a4b5d8;
+    
+}
+
+.botoes:hover{
+    cursor: pointer;
+    background-color: rgb(107, 164, 245);
 }
