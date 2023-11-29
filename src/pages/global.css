@@ -34,3 +34,24 @@ td{
     cursor: pointer;
     background-color: rgb(107, 164, 245);
 }
+
+.btn-novo{
+    padding: 10px;
+    background-color:  #007bff;
+    color: white;
+    border-radius: 5px;
+    border: solid 0px ;
+    margin-bottom: 10px;
+    text-decoration: none;
+    display: flex;
+    width: 10%;
+
+
+}
+.btn-novo:hover{
+    background-color: #0651a1;
+    cursor: pointer;
+    text-decoration: none;
+    
+    
+}

@@ -1,9 +1,13 @@
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
 import './styles.css';
 import Logo from '../../assets/img/logo.jpg';
 import Menu from '../../componentes/menu';
 import '../../pages/global.css';
 import { FiEdit, FiTrash, FiDelete, FiFilePlus } from "react-icons/fi";
-
+import {Link} from 'react-router-dom'
+import Head from '../../componentes/Head';
 
 export default function Listausuario() {
     const dados = [
@@ -12,16 +16,37 @@ export default function Listausuario() {
         { id: 3, nome: "Nilson", email: "carlos@gmail.com.", senha: "321" },
     ]
 
+   const apagar = (id) => {
+        confirmAlert({
+          title: 'Excluir usuário',
+          message: 'Deseja  realmente excluir esse usuário.',
+          buttons: [
+            {
+              label: 'sim',
+              onClick: () => alert(`Você apagou o usuário id: ${id}`)
+            },
+            {
+              label: 'Não',
+              onClick: () => alert('Click No')
+            }
+          ]
+        });
+      };
+
     return (
         <div className="dashboard-container">
+            
+
             <div className='menu'>
                 <h1>Menu</h1>
                 <Menu />
             </div>
+
             <div className='principal'>
-                <h1>Lista Usuário</h1>
+
+                <Head title="Lista Usuário" />
                 
-                <button className='btn-novo'> Novo Cadastro</button>
+                <Link className='btn-novo'> Novo Cadastro</Link>
 
                 <table >
                     <tr>
@@ -39,10 +64,24 @@ export default function Listausuario() {
                                     <td>{usu.nome}</td>
                                     <td>{usu.email}</td>
                                     <td className='botoes'>
-                                        <FiEdit  size={18} color='#3a5795' cursor="pointer"/>
+
+                                        <FiEdit  
+                                        size={18}
+                                        color=' #007bff'
+                                        cursor="pointer"
+                                        />
+
                                     </td>
+                                    
                                     <td className='botoes'>
-                                        <FiTrash size={18} color='red'  cursor="pointer" />
+
+                                        <FiTrash
+                                         size={18} 
+                                         color='red' 
+                                         cursor="pointer"
+                                         onClick={(e)=>apagar(usu.id)}
+                                         />
+
                                     </td>
                                 </tr>
                             )
