@@ -1,7 +1,7 @@
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
-import './styles.css';
+
 import Logo from '../../assets/img/logo.jpg';
 import Menu from '../../componentes/menu';
 import '../../pages/global.css';
@@ -46,7 +46,7 @@ export default function Listausuario() {
 
                 <Head title="Lista Usuário" />
                 
-                <Link className='btn-novo'> Novo Cadastro</Link>
+                <Link to="/cadastrousuario" className='btn-novo'> Novo Cadastro</Link>
 
                 <table >
                     <tr>
