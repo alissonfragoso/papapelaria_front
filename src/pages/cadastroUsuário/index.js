@@ -1,13 +1,15 @@
-
-
+import React,{useState} from 'react';
+import Head from '../../componentes/Head';
 import Menu from '../../componentes/menu';
 import '../../pages/global.css';
+import { Link } from 'react-router-dom';
 import { FiFilePlus } from "react-icons/fi";
-import { Link } from 'react-router-dom'
-import Head from '../../componentes/Head';
+import { RiSave3Fill } from "react-icons/ri";
+import { MdCancel } from "react-icons/md";
 
 
 export default function Cadastrousuario() {
+    const[nome,setNome] = useState("");
 
 
     return (
@@ -23,13 +25,20 @@ export default function Cadastrousuario() {
 
                 <Head title="Cadastro de Usuário" />
 
-                <form>
-                    <input type="text" placeholder='Digite o nome do usuário' />
-                    <input type="email" placeholder='Digite o seu email' />
-                    <input type="password" placeholder='Digite a senha' />
-                    <button>Salvar</button>
-                    <button>Cancelar</button>
-                </form>
+                <div className='form-container'>
+                    <form className='form-cadastro'>
+                        <input type="text" value={nome} onChange={e=>setNome(e.target.value)} placeholder='Digite o nome do usuário' />
+                        <input type="email" placeholder='Digite o seu email' />
+                        <input type="password" placeholder='Digite a senha' />
+                        <div className='acao'>
+                            <button className='btn-save'> <RiSave3Fill /> Salvar</button>
+                            <button className='btn-cancel'> <MdCancel /> Cancelar</button>
+                        </div>
+                    </form>
+                    
+                </div>
+
+
             </div>
 
         </div>

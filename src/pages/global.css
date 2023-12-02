@@ -1,8 +1,9 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
-.dashboard-container{
+
+.dashboard-container {
     background-color: #6d8d8c;
     height: 100vh;
     display: flex;
@@ -10,37 +11,41 @@
     width: 90%;
     margin: auto;
 }
-.menu{
+
+.menu {
     width: 20%;
     background-color: #ffff;
     margin: 5px;
 }
-.principal{
+
+.principal {
     width: 80%;
-    background-color:#ffff;
+    background-color: #f8f8f8f8;
     margin: 5px;
     padding: 5px;
 }
-table{
+
+table {
     width: 100%;
     border-collapse: collapse;
 }
-td{
-    border:  solid 0.5px #a4b5d8;
-    
+
+td {
+    border: solid 0.5px #a4b5d8;
+
 }
 
-.botoes:hover{
+.botoes:hover {
     cursor: pointer;
     background-color: rgb(107, 164, 245);
 }
 
-.btn-novo{
+.btn-novo {
     padding: 10px;
-    background-color:  #007bff;
+    background-color: #007bff;
     color: white;
     border-radius: 5px;
-    border: solid 0px ;
+    border: solid 0px;
     margin-bottom: 10px;
     text-decoration: none;
     display: flex;
@@ -48,10 +53,97 @@ td{
 
 
 }
-.btn-novo:hover{
+
+.btn-novo:hover {
     background-color: #0651a1;
     cursor: pointer;
     text-decoration: none;
-    
-    
+}
+
+form input {
+    margin: 7px;
+    padding: 10px;
+    border: #6d8d8c;
+    background-color: rgb(239, 239, 232);
+}
+
+input:focus {
+    box-shadow: 0 0 0 0;
+    border: o none;
+    outline: 0;
+}
+
+
+.btn-save {
+    font-size: 15px;
+    padding: 5px;
+    background-color: #0ca51b;
+    color: #f8f8f8f8;
+    border-radius: 5px;
+    border: solid 0#a4b5d8;
+    margin-bottom: 10px;
+    text-decoration: none;
+    display: flex;
+    width: 120px;
+    margin: 5px;
+    align-items: center;
+
+}
+
+.btn-save>svg,
+.btn-cancel>svg {
+    padding-left: 8px;
+    /* Ajuste o valor conforme necessário */
+}
+
+
+.btn-save:hover {
+    background-color: #048e14;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-cancel:hover {
+    background-color: #870606;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-cancel {
+    align-items: center;
+    font-size: 15px;
+    padding: 5px;
+    background-color: red;
+    color: #f8f8f8f8;
+    border-radius: 5px;
+    border: solid 0 #a4b5d8;
+    margin-bottom: 10px;
+    text-decoration: none;
+    display: flex;
+    width: 120px;
+    margin: 5px;
+
+
+}
+
+.acao {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: space-around;
+}
+
+.form-container {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.form-cadastro {
+
+    background-color: #1c6f77;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px 0px #6d8d8c;
+
 }
