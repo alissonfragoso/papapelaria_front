@@ -37,7 +37,7 @@ td {
 
 .botoes:hover {
     cursor: pointer;
-    background-color: rgb(107, 164, 245);
+    background-color: #ccccccf8;
 }
 
 .btn-novo {
@@ -129,7 +129,7 @@ td {
 
 .form-cadastro {
 
-    background-color: #1c6f77;
+    background-color: #8ca3a5;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 10px 10px 5px 1px #9caead;
