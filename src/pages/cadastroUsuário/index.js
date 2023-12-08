@@ -22,18 +22,56 @@ export default function Cadastrousuario() {
         email,
         senha
     }
+    
 
     function salvardados(e) {
         e.preventDefault();
-        // console.log(usuario);
+        console.log(usuario);
 
-        if (nome == "")
-            alert("Preencha o campo nome ")
-        else if (email == "")
-            alert("Preencha o campo email")
-        else if (senha == "")
-            alert("Preencha o campo senha")
-        else {
+        // if (nome == "")
+        //     alert("Preencha o campo nome ")
+        // else if (email == "")
+        //     alert("Preencha o campo email")
+        // else if (senha == "")
+        //     alert("Preencha o campo senha")
+        // else {
+        //     const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
+        //     banco.push(usuario);
+        //     localStorage.setItem("cd-usuarios", JSON.stringify(banco));
+        //     alert("Usuário salvo com sucesso");
+        //     navigate('/listausuario');
+        // // }
+        // let i = 0;
+        // if (nome == "")
+        //     i++;
+        // else if (email == "")
+        //     i++;
+        // else if (senha == "")
+        //     i++;
+        // if (1 == 0);
+        // {
+        //     alert("Verifique!! Há campos vazios!")
+        // }
+        // {
+        //     const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
+        //     banco.push(usuario);
+        //     localStorage.setItem("cd-usuarios", JSON.stringify(banco));
+        //     alert("Usuário salvo com sucesso");
+        //     navigate('/listausuario');
+        // }
+
+        let i = 0;
+        if (nome == "") {
+            i++;
+        } else if (email == "") {
+            i++;
+        } else if (senha == "") {
+            i++;
+        }
+
+        if (i > 0) {
+            alert("Verifique!! Há campos vazios!");
+        } else {
             const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
             banco.push(usuario);
             localStorage.setItem("cd-usuarios", JSON.stringify(banco));
