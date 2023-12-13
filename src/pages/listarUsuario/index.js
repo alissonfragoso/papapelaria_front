@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import Logo from '../../assets/img/logo.jpg';
@@ -18,29 +18,29 @@ export default function Listausuario() {
     //     { id: 3, nome: "Nilson", email: "carlos@gmail.com.", senha: "321" },
     // ]
 
-    useEffect(()=>{
+    useEffect(() => {
         mostrardados();
-    },[])
+    }, [])
 
 
-    function mostrardados()
-    {
+    function mostrardados() {
         setBanco(JSON.parse(localStorage.getItem("cd-usuarios") || "[]"));
     }
 
     const apagar = (id) => {
         confirmAlert({
-            title: 'Excluir usuário',
-            message: 'Deseja  realmente excluir esse usuário.',
+            title: 'Excluir Usuário',
+            message: 'Deseja realmente excluir esse usuário?',
             buttons: [
                 {
-                    label: 'sim',
-                    onClick: () =>
-                     { 
-                        setDados(banco.filter(item=>item.id!=id));
-                        localStorage.setItem("cd-usuarios", JSON.stringify(dados));
-                        alert(`Você apagou o usuário id: ${id}`) 
+                    label: 'Sim',
+                    onClick: () => {
+                        let dadosnovos = banco.filter(item => item.id !== id);
+                        localStorage.setItem("cd-usuarios", JSON.stringify(dadosnovos));
+                        setBanco(dadosnovos); // Atualiza o estado com os dados filtrados
+                        alert(`Você apagou o usuário id:${id}`);
                     }
+
                 },
                 {
                     label: 'Não',
