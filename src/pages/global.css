@@ -150,3 +150,6 @@ td {
     border: 1px solid #dcdce6;
     outline: 0;
 }
+h1,h2{
+    color: darkslategrey;
+}
