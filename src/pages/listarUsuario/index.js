@@ -83,7 +83,7 @@ export default function Listausuario() {
                                     <td>{usu.nome}</td>
                                     <td>{usu.email}</td>
                                     <td className='botoes'>
-                                        <Link to = {`editarusuario/${usu.id}`}>
+                                        <Link to = {`/editarusuario/${usu.id}`}>
                                             
                                         <FiEdit
                                             size={18}

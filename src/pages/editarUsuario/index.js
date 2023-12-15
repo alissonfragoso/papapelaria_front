@@ -9,12 +9,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Head from '../../componentes/Head';
 
 export default function Editarusuario() {
-    let {id} = useParams();
+    let { id } = useParams;
     const navigate = useNavigate();
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-    const [banco, setBanco] = useState([])
+    const [banco, setBanco] = useState([]);
+    const [status,setStatus] = useState(true);
 
     const usuario = {
         nome,
@@ -23,17 +24,26 @@ export default function Editarusuario() {
     }
 
     useEffect(() => {
-        mostrardados();
-    }, [])
+        if(status===true){
+            mostrardados();
+            setStatus(false);
+        }
+
+    }, [banco])
 
 
-     async function mostrardados() {
-        let dadosnovos = await banco.filter(item => item.id == id);
+    async function mostrardados(id) {
+        // let dadosnovos = await banco.filter(item => item.id == id);
         setBanco(JSON.parse(localStorage.getItem("cd-usuarios") || "[]"));
-      
-        setNome(dadosnovos[0].nome);
-        setEmail(dadosnovos[0].email);
-        setSenha(dadosnovos[0].senha);
+         console.log(banco)
+        banco.map((usu) => {
+
+            if (usu.id === id) {
+                setNome(usu.nome);
+                setEmail(usu.email);
+                setSenha(usu.senha);
+            }
+        })
     }
 
 
