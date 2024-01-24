@@ -114,3 +114,13 @@ export default function Cadastrousuario() {
     )
 
 }
+<form className='form-cadastro' onSubmit={salvardados}>
+                        <input type="text" value={nome} onChange={e => setNome(e.target.value)} placeholder='Digite o nome do usuário' />
+                        <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder='Digite o seu email' />
+                        <input type="password" value={senha} onChange={e => setSenha(e.target.value)} placeholder='Digite a senha' />
+                        <div className='acao'>
+                            <button className='btn-save'> <RiSave3Fill /> Salvar</button>
+                            <button className='btn-cancel'> <MdCancel /> Cancelar</button>
+                        </div>
+                    </form>
+ddddddddddddddddddw
