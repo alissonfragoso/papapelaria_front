@@ -8,13 +8,14 @@ import { RiSave3Fill } from "react-icons/ri";
 import { MdCancel } from "react-icons/md";
 
 
-export default function Cadastrousuario() {
+
+export default function Cadastroproduto() {
     const navigate = useNavigate();
 
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-    //const usuarios = ["carlos","carlos@gmail.com","123"]
+   
 
     const usuario = {
         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
@@ -28,38 +29,7 @@ export default function Cadastrousuario() {
         e.preventDefault();
         console.log(usuario);
 
-        // if (nome == "")
-        //     alert("Preencha o campo nome ")
-        // else if (email == "")
-        //     alert("Preencha o campo email")
-        // else if (senha == "")
-        //     alert("Preencha o campo senha")
-        // else {
-        //     const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
-        //     banco.push(usuario);
-        //     localStorage.setItem("cd-usuarios", JSON.stringify(banco));
-        //     alert("Usuário salvo com sucesso");
-        //     navigate('/listausuario');
-        // // }
-        // let i = 0;
-        // if (nome == "")
-        //     i++;
-        // else if (email == "")
-        //     i++;
-        // else if (senha == "")
-        //     i++;
-        // if (1 == 0);
-        // {
-        //     alert("Verifique!! Há campos vazios!")
-        // }
-        // {
-        //     const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
-        //     banco.push(usuario);
-        //     localStorage.setItem("cd-usuarios", JSON.stringify(banco));
-        //     alert("Usuário salvo com sucesso");
-        //     navigate('/listausuario');
-        // }
-
+        
         let i = 0;
         if (nome == "") {
             i++;
@@ -68,7 +38,7 @@ export default function Cadastrousuario() {
         } else if (senha == "") {
             i++;
         }
-
+        
         if (i > 0) {
             alert("Verifique!! Há campos vazios!");
         } else {
@@ -79,7 +49,7 @@ export default function Cadastrousuario() {
             navigate('/listausuario');
         }
     }
-
+    
     return (
         <div className="dashboard-container">
 
@@ -111,6 +81,6 @@ export default function Cadastrousuario() {
 
         </div>
 
-    )
-
+)
 }
+
