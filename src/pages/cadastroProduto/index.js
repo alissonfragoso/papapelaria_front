@@ -12,44 +12,42 @@ import { MdCancel } from "react-icons/md";
 export default function Cadastroproduto() {
     const navigate = useNavigate();
 
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-   
+    const [status, setStatus] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [estoque_minimo, setEstoque_minimo] = useState(0);
+    const [estoque_maximo, setEstoque_maximo] = useState(10);
 
-    const usuario = {
+    const produto = {
         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
-        nome,
-        email,
-        senha
+        status,
+        descricao,
+        estoque_minimo,
+        estoque_maximo
     }
-    
+
 
     function salvardados(e) {
         e.preventDefault();
-        console.log(usuario);
-
-        
         let i = 0;
-        if (nome == "") {
+        if (status === "")
             i++;
-        } else if (email == "") {
+        else if (descricao === "")
             i++;
-        } else if (senha == "") {
+        else if (estoque_minimo === "" || estoque_minimo === 0)
             i++;
-        }
-        
-        if (i > 0) {
-            alert("Verifique!! Há campos vazios!");
+        else if (estoque_maximo === "" || estoque_maximo === 0)
+            i++;
+        if (i === 0) {
+            const banco = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
+            banco.push(produto);
+            localStorage.setItem("cd-porduto", JSON.stringify(banco));
+            alert("Produto salvo com sucesso");
+            navigate('/listaproduto');
         } else {
-            const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
-            banco.push(usuario);
-            localStorage.setItem("cd-usuarios", JSON.stringify(banco));
-            alert("Usuário salvo com sucesso");
-            navigate('/listausuario');
+            alert("Verifique! Há campos vazios!")
         }
     }
-    
+
     return (
         <div className="dashboard-container">
 
@@ -61,17 +59,21 @@ export default function Cadastroproduto() {
 
             <div className='principal'>
 
-                <Head title="Cadastro de Usuário" />
+                <Head title="Cadastro de Produto" />
 
                 <div className='form-container'>
                     <form className='form-cadastro' onSubmit={salvardados}>
-                        <input type="text" value={nome} onChange={e => setNome(e.target.value)} placeholder='Digite o nome do usuário' />
-                        <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder='Digite o seu email' />
-                        <input type="password" value={senha} onChange={e => setSenha(e.target.value)} placeholder='Digite a senha' />
+
+                        <input type="text" value={status} onChange={e => setStatus(e.target.value)} placeholder='Digite o status' />
+                        <input type="text" value={descricao} onChange={e => setDescricao(e.target.value)} placeholder='Digite a descrição' />
+                        <input type="number" value={estoque_minimo} onChange={e => setEstoque_minimo(e.target.value)}  />
+                        <input type="number" value={estoque_maximo} onChange={e => setEstoque_maximo(e.target.value)}  />
+                        
                         <div className='acao'>
                             <button className='btn-save'> <RiSave3Fill /> Salvar</button>
                             <button className='btn-cancel'> <MdCancel /> Cancelar</button>
                         </div>
+
                     </form>
 
                 </div>
@@ -81,6 +83,6 @@ export default function Cadastroproduto() {
 
         </div>
 
-)
+    )
 }
 

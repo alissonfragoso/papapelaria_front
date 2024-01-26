@@ -17,8 +17,8 @@ export default function Rotas(){
                 <Route path="/dashboard" element={<Dashboard/>} />
                 <Route path="/listausuario" element={<Listausuario/>} />
                 <Route path="/cadastrousuario"element={<Cadastrousuario/>} />
+                <Route path="/cadastroproduto" element={<Cadastroproduto/>} />
                 <Route path="/editarusuario/:id"element={<Editarusuario/>} />
-                <Route path="/cadastroproduto/:id" element={<Cadastroproduto/>} />
 
 
             </Routes>
