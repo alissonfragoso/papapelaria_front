@@ -18,6 +18,7 @@ export default function Editarusuario() {
     const [status,setStatus] = useState(true);
 
     const usuario = {
+        id,
         nome,
         email,
         senha

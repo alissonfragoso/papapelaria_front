@@ -40,7 +40,7 @@ export default function Cadastroproduto() {
         if (i === 0) {
             const banco = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
             banco.push(produto);
-            localStorage.setItem("cd-porduto", JSON.stringify(banco));
+            localStorage.setItem("cd-produto", JSON.stringify(banco));
             alert("Produto salvo com sucesso");
             navigate('/listaproduto');
         } else {
