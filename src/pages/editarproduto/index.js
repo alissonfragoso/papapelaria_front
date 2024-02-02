@@ -65,7 +65,7 @@ export default function Editarusuario() {
             banco.push(produto);
             localStorage.setItem("cd-produto", JSON.stringify(banco));
             alert("Produto salvo com sucesso");
-            navigate('/listaproduto');
+            navigate('/listarproduto');
         } else {
             alert("Verifique! Há campos vazios!")
         }

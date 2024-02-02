@@ -5,7 +5,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { Link } from 'react-router-dom';
 
-export default function Listarproduto() {
+export default function Entradaproduto() {
     const [banco, setBanco] = useState([]);
 
     useEffect(() => {
@@ -49,16 +49,16 @@ export default function Listarproduto() {
             </div>
 
             <div className='principal'>
-                <h1>Lista de Produtos</h1>
-                <Link to="/cadastroproduto" className='btn-novo'>Novo Cadastro</Link>
+                <h1>Entrada de Produto</h1>
+                <Link to="/Produtoscadastrados" className='btn-novo'>produtos</Link>
                 <table>
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Status</th>
-                            <th>Descrição</th>
-                            <th>Estoque Mínimo</th>
-                            <th>Estoque Máximo</th>
+                            <th>id_produto</th>
+                            <th>Quantidade</th>
+                            <th>Valor_unitario</th>
+                            <th>Data_entrada</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -69,15 +69,11 @@ export default function Listarproduto() {
                         banco.map((usu) => (
                             <tr key={usu.id}>
                                 <td>{usu.id}</td>
-                                <td>{usu.status}</td>
-                                <td>{usu.descricao}</td>
-                                <td>{usu.estoque_minimo}</td>
-                                <td>{usu.estoque_maximo}</td>
-                                <td className='botoes'>
-                                    <Link to={`/editarproduto/${usu.id}`}>
-                                        <FiEdit size={18} color='#007bff' cursor="pointer" />
-                                    </Link>
-                                </td>
+                                <td>{usu.id_produto}</td>
+                                <td>{usu.quantidade}</td>
+                                <td>{usu.valor_unitario}</td>
+                                <td>{usu.Data_entrada}</td>
+                               
                                 <td className='botoes'>
                                     <FiTrash
                                         size={18}
