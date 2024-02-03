@@ -38,10 +38,10 @@ export default function Produtoscadastrados() {
         else if (Data_entrada === "" || Data_entrada === 0)
             i++;
         if (i === 0) {
-            const banco = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
+            const banco = JSON.parse(localStorage.getItem("cd-entradas") || "[]");
             banco.push(produto);
-            localStorage.setItem("cd-produto", JSON.stringify(banco));
-            alert("Produto salvo com sucesso");
+            localStorage.setItem("cd-entradas", JSON.stringify(banco));
+            alert("Entrada salvo com sucesso");
             navigate('/entradaproduto');
         } else {
             alert("Verifique! Há campos vazios!")

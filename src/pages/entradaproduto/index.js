@@ -13,23 +13,23 @@ export default function Entradaproduto() {
     }, []);
 
     function mostrardados() {
-        setBanco(JSON.parse(localStorage.getItem("cd-produto") || "[]"));
+        setBanco(JSON.parse(localStorage.getItem("cd-entradas") || "[]"));
      
         
     }
 
     const apagar = (id) => {
         confirmAlert({
-            title: 'Excluir Produto',
-            message: 'Deseja realmente excluir esse Produto?',
+            title: 'Excluir Entrada',
+            message: 'Deseja realmente excluir esse Entrada?',
             buttons: [
                 {
                     label: 'Sim',
                     onClick: () => {
                         let dadosnovos = banco.filter(item => item.id !== id);
-                        localStorage.setItem("cd-produto", JSON.stringify(dadosnovos));
+                        localStorage.setItem("cd-entradas", JSON.stringify(dadosnovos));
                         setBanco(dadosnovos);
-                        alert(`Você apagou o produto id:${id}`);
+                        alert(`Você apagou a entrada id:${id}`);
                     }
                 },
                 {

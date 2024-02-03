@@ -7,12 +7,12 @@ import '../../pages/global.css';
 import { FiEdit, FiTrash, FiDelete, FiFilePlus, FiArrowLeft } from "react-icons/fi";
 
 import Head from '../../componentes/Head';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Listausuario() {
     const [dados, setDados] = useState([]);
     const [banco, setBanco] = useState([]);
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     // const dados = [
     //     { id: 1, nome: "Carlos", email: "carlos@gmail.com.", senha: "123" },
@@ -83,13 +83,13 @@ export default function Listausuario() {
                                     <td>{usu.nome}</td>
                                     <td>{usu.email}</td>
                                     <td className='botoes'>
-                                        <Link to = {`/editarusuario/${usu.id}`}>
-                                            
-                                        <FiEdit
-                                            size={18}
-                                            color=' #007bff'
-                                            cursor="pointer"
-                                        />
+                                        <Link to={`/editarusuario/${usu.id}`}>
+
+                                            <FiEdit
+                                                size={18}
+                                                color=' #007bff'
+                                                cursor="pointer"
+                                            />
 
                                         </Link>
 

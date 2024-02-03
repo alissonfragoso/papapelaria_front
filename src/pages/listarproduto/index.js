@@ -13,7 +13,7 @@ export default function Listarproduto() {
     }, []);
 
     function mostrardados() {
-        setBanco(JSON.parse(localStorage.getItem("cd-produto") || "[]"));
+        setBanco(JSON.parse(localStorage.getItem("cd-produtos") || "[]"));
      
         
     }
@@ -27,7 +27,7 @@ export default function Listarproduto() {
                     label: 'Sim',
                     onClick: () => {
                         let dadosnovos = banco.filter(item => item.id !== id);
-                        localStorage.setItem("cd-produto", JSON.stringify(dadosnovos));
+                        localStorage.setItem("cd-produtos", JSON.stringify(dadosnovos));
                         setBanco(dadosnovos);
                         alert(`Você apagou o produto id:${id}`);
                     }
