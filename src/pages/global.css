@@ -53,6 +53,13 @@ td {
 
 
 }
+select,option{
+    
+    outline: 0;
+    margin-bottom: 10px;
+
+}
+
 
 .btn-novo:hover {
     background-color: #0651a1;

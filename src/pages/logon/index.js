@@ -36,7 +36,7 @@ export default function Logon(){
                 <input placeholder="Email" value={email}onChange={e => setEmail(e.target.value)}/>
                 <input placeholder="Senha" type='password' value={senha} onChange={e => setSenha(e.target.value)}/>
                 <button type="submit">Entrar</button>
-                <a href="#">Novo Cadastro</a>
+                <a href="/cadastroUsuario">Novo Cadastro</a>
             </form>
         </section>
     </div>

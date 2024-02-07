@@ -14,8 +14,8 @@ export default function Entradaproduto() {
 
     function mostrardados() {
         setBanco(JSON.parse(localStorage.getItem("cd-entradas") || "[]"));
-     
-        
+
+
     }
 
     const apagar = (id) => {
@@ -40,9 +40,26 @@ export default function Entradaproduto() {
         });
     };
 
+    function mostrarnome(idproduto) {
+        let nome = "";
+        const Listarproduto = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
+
+        Listarproduto.
+            filter(value => value.id == idproduto).
+            map(value => {
+
+
+                nome = value.descricao;
+
+
+
+            })
+        return nome;
+    }
+
     return (
         <div className="dashboard-container">
-            
+
             <div className='menu'>
                 <h1>Menu</h1>
                 <Menu />
@@ -55,37 +72,37 @@ export default function Entradaproduto() {
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>id_produto</th>
+                            <th>id produto</th>
                             <th>Quantidade</th>
-                            <th>Valor_unitario</th>
-                            <th>Data_entrada</th>
+                            <th>Valor unitario</th>
+                            <th>Data entrada</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                       
-                        banco.map((usu) => (
-                            <tr key={usu.id}>
-                                <td>{usu.id}</td>
-                                <td>{usu.id_produto}</td>
-                                <td>{usu.quantidade}</td>
-                                <td>{usu.valor_unitario}</td>
-                                <td>{usu.Data_entrada}</td>
-                               
-                                <td className='botoes'>
-                                    <FiTrash
-                                        size={18}
-                                        color='red'
-                                        cursor="pointer"
-                                        onClick={(e) => apagar(usu.id)}
-                                    />
-                                </td>
-                            </tr>
-                        ))
+
+                            banco.map((usu) => (
+                                <tr key={usu.id}>
+                                    <td>{usu.id}</td>
+                                    <td>{(mostrarnome)(usu.id_produto)}</td>
+                                    <td>{usu.quantidade}</td>
+                                    <td>{usu.valor_unitario}</td>
+                                    <td>{usu.Data_entrada}</td>
+
+                                    <td className='botoes'>
+                                        <FiTrash
+                                            size={18}
+                                            color='red'
+                                            cursor="pointer"
+                                            onClick={(e) => apagar(usu.id)}
+                                        />
+                                    </td>
+                                </tr>
+                            ))
                         }
-                    
+
 
 
                     </tbody>
