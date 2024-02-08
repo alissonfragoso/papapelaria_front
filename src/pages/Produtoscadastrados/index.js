@@ -25,6 +25,13 @@ export default function Produtoscadastrados() {
         valor_unitario,
         Data_entrada
     }
+    const dadosestoque = {
+        id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
+        id_produto,
+        quantidade,
+        valor_unitario
+       
+    }
 
 useEffect(()=>{
     mostrarproduto();
@@ -42,9 +49,11 @@ useEffect(()=>{
         else if (Data_entrada === "" || Data_entrada === 0)
             i++;
         if (i === 0) {
+            const estoque = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
             const banco = JSON.parse(localStorage.getItem("cd-entradas") || "[]");
             banco.push(entrada);
             localStorage.setItem("cd-entradas", JSON.stringify(banco));
+            localStorage.setItem("cd-estoques", JSON.stringify(dadosestoque));
             alert("Entrada salvo com sucesso");
             navigate('/entradaproduto');
         } else {
@@ -92,7 +101,7 @@ useEffect(()=>{
                         
                         <input type="number" value={quantidade} onChange={e => setQuantidade(e.target.value)} placeholder='Digite a quantidade' />
                         <input type="number" value={valor_unitario} onChange={e => setValor_unitario(e.target.value)} placeholder='valor' />
-                        <input type="date" value={Data_entrada} onChange={e => setData_entrada(e.target.value)} placeholder='XX/XX/XXXX' />
+                        <input type="date" value={Data_entrada} onChange={e => setData_entrada(e.target.value)} placeholder='' />
 
                         <div className='acao'>
                             <button className='btn-save'> <RiSave3Fill /> Salvar</button>

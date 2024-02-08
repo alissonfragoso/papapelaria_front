@@ -62,10 +62,13 @@ export default function Editarusuario() {
             i++;
         if (i === 0) {
             const banco = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
-            banco.push(produto);
-            localStorage.setItem("cd-produto", JSON.stringify(banco));
+            let dadosnovos = banco.filter(item => item.id !== id);
+            dadosnovos.push(produto);
+           
+            localStorage.setItem("cd-produtos",JSON.stringify(dadosnovos));
             alert("Produto salvo com sucesso");
             navigate('/listarproduto');
+        
         } else {
             alert("Verifique! Há campos vazios!")
         }
