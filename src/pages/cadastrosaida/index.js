@@ -1,115 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import Menu from '../../componentes/menu';
-// import { confirmAlert } from 'react-confirm-alert';
-// import 'react-confirm-alert/src/react-confirm-alert.css';
-// import { FiEdit, FiTrash } from "react-icons/fi";
-// import { Link } from 'react-router-dom';
-
-// export default function Entradaproduto() {
-//     const [banco, setBanco] = useState([]);
-
-//     useEffect(() => {
-//         mostrardados();
-//     }, []);
-
-//     function mostrardados() {
-//         setBanco(JSON.parse(localStorage.getItem("cd-entradas") || "[]"));
-
-
-//     }
-
-//     const apagar = (id) => {
-//         confirmAlert({
-//             title: 'Excluir Entrada',
-//             message: 'Deseja realmente excluir esse Entrada?',
-//             buttons: [
-//                 {
-//                     label: 'Sim',
-//                     onClick: () => {
-//                         let dadosnovos = banco.filter(item => item.id !== id);
-//                         localStorage.setItem("cd-entradas", JSON.stringify(dadosnovos));
-//                         setBanco(dadosnovos);
-//                         alert(`Você apagou a entrada id:${id}`);
-//                     }
-//                 },
-//                 {
-//                     label: 'Não',
-//                     onClick: () => alert('Click No')
-//                 }
-//             ]
-//         });
-//     };
-
-//     function mostrarnome(idproduto) {
-//         let nome = "";
-//         const Listarproduto = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
-
-//         Listarproduto.
-//             filter(value => value.id == idproduto).
-//             map(value => {
-
-
-//                 nome = value.descricao;
-
-
-//             })
-//         return nome;
-//     }
-
-//     return (
-//         <div className="dashboard-container">
-
-//             <div className='menu'>
-//                 <h1>Menu</h1>
-//                 <Menu />
-//             </div>
-
-//             <div className='principal'>
-//                 <h1>Entrada de Produto</h1>
-//                 <Link to="/Produtoscadastrados" className='btn-novo'>produtos</Link>
-//                 <table>
-//                     <thead>
-//                         <tr>
-//                             <th>Id</th>
-//                             <th>id produto</th>
-//                             <th>Quantidade</th>
-//                             <th>Valor unitario</th>
-//                             <th>Data entrada</th>
-//                             <th></th>
-//                             <th></th>
-//                         </tr>
-//                     </thead>
-//                     <tbody>
-//                         {
-
-//                             banco.map((usu) => (
-//                                 <tr key={usu.id}>
-//                                     <td>{usu.id}</td>
-//                                     <td>{(mostrarnome)(usu.id_produto)}</td>
-//                                     <td>{usu.quantidade}</td>
-//                                     <td>{usu.valor_unitario}</td>
-//                                     <td>{usu.Data_entrada}</td>
-
-//                                     <td className='botoes'>
-//                                         <FiTrash
-//                                             size={18}
-//                                             color='red'
-//                                             cursor="pointer"
-//                                             onClick={(e) => apagar(usu.id)}
-//                                         />
-//                                     </td>
-//                                 </tr>
-//                             ))
-//                         }
-
-
-
-//                     </tbody>
-//                 </table>
-//             </div>
-//         </div>
-//     )
-// }
 
 import React,{useEffect, useState} from 'react';
 
@@ -124,12 +12,12 @@ import Head from '../../componentes/Head';
 
 
 
-export default function Cadastroentrada(){
+export default function Cadastrosaida(){
   const navigate =useNavigate();
   const [id_produto,setId_produto]  = useState("");
   const [qtde,setQtde]  = useState("");
   const [valor_unitario,setValor_unitario]  = useState("");
-  const [data_entrada,setData_entrada]  = useState("");
+  const [data_saida,setData_saida]  = useState("");
   const [produto,setProduto] = useState([]);
 
   
@@ -138,7 +26,7 @@ export default function Cadastroentrada(){
       id_produto,
       qtde,
       valor_unitario,
-      data_entrada
+      data_saida
   }
 
 
@@ -214,21 +102,20 @@ useEffect(()=>{
   i++;
  else if(valor_unitario==="" || valor_unitario===0)
  i++;
- else if(data_entrada==="")
+ else if(data_saida==="")
  i++;
 if(i===0)
  {
-   const  banco =JSON.parse(localStorage.getItem("cd-entradas")|| "[]");
+   const  banco =JSON.parse(localStorage.getItem("cd-saida")|| "[]");
   
    banco.push(entrada);
  
-    localStorage.setItem("cd-entradas",JSON.stringify(banco));
+    localStorage.setItem("cd-saida",JSON.stringify(banco));
    
     atualizarEstoque(id_produto,qtde,valor_unitario) 
  
-    alert("Entrada salvo com sucesso");
-    navigate('/listarentrada');
-
+    alert("Sainda salvo com sucesso");
+    navigate('/listarsaida');
 
  }else{
   alert("Verifique! Há campos vazios!")
@@ -247,7 +134,7 @@ if(i===0)
         <Menu />
         </div>
         <div className='principal'>
-        <Head title="Cadastro de Entrada" />
+        <Head title="Cadastro de Sainda" />
         <div className='form-container'>
         <form className='form-cadastro' onSubmit={salvardados} >
             <input 
@@ -281,9 +168,9 @@ if(i===0)
             />
             <input 
                     type='date' 
-                    value={data_entrada}
-                    onChange={e=>setData_entrada(e.target.value)}
-                    placeholder='Data da Entrada' 
+                    value={data_saida}
+                    onChange={e=>setData_saida(e.target.value)}
+                    placeholder='Data de saida' 
             />
             <div className='acao'>
             <button className='btn-save'>

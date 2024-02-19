@@ -4,14 +4,18 @@ import Dashboard from './pages/dashboard';
 import Cadastrousuario from './pages/cadastroUsuario';
 import Cadastroproduto from './pages/cadastroproduto';
 
+import Cadastrosaida from './pages/cadastrosaida';
+
 import Editarusuario from './pages/editarUsuario';
 import Editarproduto from './pages/editarproduto';
 
 import Listausuario from './pages/listarUsuario';
 import Listarproduto from './pages/listarproduto';
 
-import Produtoscadastrados from './pages/produtoscadastrados';
+import Listarentrada from './pages/listarentrada';
 import Entradaproduto from './pages/entradaproduto';
+import Listarestoque from './pages/listarestoque';
+import Listarsaida from './pages/listarsaida';
 
 
 
@@ -23,15 +27,23 @@ export default function Rotas(){
                 
                 <Route path="/" exact element={<Logon/>} />
                 <Route path="/dashboard" element={<Dashboard/>} />
+
                 <Route path="/listausuario" element={<Listausuario/>} />
-                <Route path="/cadastrousuario"element={<Cadastrousuario/>} />
-                <Route path="/cadastroproduto" element={<Cadastroproduto/>} />
                 <Route path="/editarusuario/:id"element={<Editarusuario/>} />
+                <Route path="/cadastrousuario"element={<Cadastrousuario/>} />
+                <Route path="/cadastrosaida"element={<Cadastrosaida/>} />
+
+
+                <Route path="/cadastroproduto" element={<Cadastroproduto/>} />
                 <Route path="/listarproduto"element={<Listarproduto/>} />
                 <Route path="/editarproduto/:id"element={<Editarproduto/>} />
+
+
+                <Route path="/listarentrada"element={<Listarentrada/>} />
                 <Route path="/entradaproduto"element={<Entradaproduto/>} />
-                <Route path="/produtoscadastrados"element={<Produtoscadastrados/>}/>
-             
+                <Route path="/listarestoque"element={<Listarestoque/>} />
+                <Route path="/listarsaida"element={<Listarsaida/>} />
+               
 
 
             </Routes>
