@@ -51,8 +51,14 @@ td {
     display: flex;
     width: 10%;
 
+    
 
 }
+
+
+
+
+
 select,option{
     
     outline: 0;
@@ -159,4 +165,6 @@ select,option{
 }
 h1,h2{
     color: darkslategrey;
+    text-align: center;
+    padding-top: 2%;
 }

@@ -18,6 +18,21 @@ export default function Listarestoque() {
        
     }
     
+    function mostrarnome(idproduto) {
+        let nome = "";
+        const Listarproduto = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
+
+        Listarproduto.
+            filter(value => value.id == idproduto).
+            map(value => {
+
+
+                nome = value.descricao;
+
+
+            })
+        return nome;
+    }
 
     return (
         <div className="dashboard-container">
@@ -46,7 +61,7 @@ export default function Listarestoque() {
                         banco.map((usu) => (
                             <tr key={usu.id}>
                                 <td>{usu.id}</td>
-                                <td>{usu.id_produto}</td>
+                                <td>{(mostrarnome)(usu.id_produto)}</td>
                                 <td>{usu.qtde}</td>
                                 <td>{usu.valor_unitario}</td>
                                 

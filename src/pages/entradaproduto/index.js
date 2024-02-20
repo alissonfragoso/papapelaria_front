@@ -243,7 +243,7 @@ if(i===0)
     <div className="dashboard-container">
       
         <div className='menu'>
-     
+        <h1>Menu</h1>
         <Menu />
         </div>
         <div className='principal'>

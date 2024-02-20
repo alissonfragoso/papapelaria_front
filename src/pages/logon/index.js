@@ -29,7 +29,7 @@ export default function Logon(){
       <img src={Logo} />
    </div>
    <section className="form">
-       <h1>Faça seu login</h1>
+       <h1 className='l1'>Faça seu login</h1>
        <form onSubmit={logar} >
            <input placeholder="Email" 
            value={email}
@@ -41,8 +41,8 @@ export default function Logon(){
            />
             
             
-           <button type="submit">Entrar</button>
-           <a href="#">Novo Cadastro</a>
+           <button className='entrar' type="submit">Entrar</button>
+           <a className='novo' href="/cadastroUsuario">Novo Cadastro</a>
        </form>
    </section>
 </div>
