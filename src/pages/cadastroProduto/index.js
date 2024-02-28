@@ -70,7 +70,7 @@ export default function Cadastroproduto() {
                         <input type="number" value={estoque_maximo} onChange={e => setEstoque_maximo(e.target.value)}  />
                         
                         <div className='acao'>
-                            <button className='btn-save'> <RiSave3Fill /> Salvar</button>
+                            <button className='btn-save' > <RiSave3Fill /> Salvar</button>
                             <button className='btn-cancel'> <MdCancel /> Cancelar</button>
                         </div>
 

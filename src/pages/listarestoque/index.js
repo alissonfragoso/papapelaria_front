@@ -51,7 +51,7 @@ export default function Listarestoque() {
                             <th>Id</th>
                             <th>Produto</th>
                             <th>Quantidade</th>
-                            <th>Valor unitario</th>
+                            <th>Valor unitário</th>
                            
                         </tr>
                     </thead>

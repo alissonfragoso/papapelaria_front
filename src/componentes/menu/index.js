@@ -14,7 +14,7 @@ export default function Menu(){
                 <Link to="/listarproduto" className='link'><SiProtondrive /> Produto</Link>
                 <Link to="/listarentrada"className='link'><IoEnter /> Entrada</Link>
                 <Link to="/listarestoque"className='link'><AiOutlineStock /> Estoque</Link>
-                <Link to="/listarsaida"className='link'><IoIosExit /> Saida</Link>
+                <Link to="/listarsaida"className='link'><IoIosExit /> Saída</Link>
            </nav>
         </div>
     )

@@ -75,7 +75,7 @@ export default function Editarusuario() {
                             onChange={e => setSenha(e.target.value)}
                             placeholder='Digite a senha'
                         />
-                        <div className='acao'>
+                        <div className='acao' >
                             <button className='btn-save'>
                                 <FaSave />
                                 Salvar

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { FiFilePlus } from "react-icons/fi";
 import { RiSave3Fill } from "react-icons/ri";
 import { MdCancel } from "react-icons/md";
+import api from '../../server/api';
 
 
 export default function Cadastrousuario() {
@@ -41,11 +42,19 @@ export default function Cadastrousuario() {
         if (i > 0) {
             alert("Verifique!! Há campos vazios!");
         } else {
-            const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
-            banco.push(usuario);
-            localStorage.setItem("cd-usuarios", JSON.stringify(banco));
-            alert("Usuário salvo com sucesso");
-            navigate('/listausuario');
+            // const banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
+            // banco.push(usuario);
+            // localStorage.setItem("cd-usuarios", JSON.stringify(banco));
+
+            api.post('/usuario',usuario,
+            {headers:{"Content-Type":"application/json"}})
+            
+            .then(function(response){
+                console.log(response.data)
+                alert(response.data.mensagem);
+            }
+            )
+            // navigate('/listausuario');
         }
     }
     

@@ -4,6 +4,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import Logo from '../../assets/img/logo.jpg';
 import Menu from '../../componentes/menu';
 import '../../pages/global.css';
+import api from '../../server/api';
 import { FiEdit, FiTrash, FiDelete, FiFilePlus, FiArrowLeft } from "react-icons/fi";
 
 import Head from '../../componentes/Head';
@@ -26,7 +27,12 @@ export default function Listausuario() {
 
 
     function mostrardados() {
-        setBanco(JSON.parse(localStorage.getItem("cd-usuarios") || "[]"));
+        //setBanco(JSON.parse(localStorage.getItem("cd-usuarios") || "[]"));
+        api.get('/usuario')
+        .then(res=>{
+          console.log(res.data)
+          setBanco(res.data)
+        })
     }
 
     const apagar = (id) => {
@@ -82,6 +88,7 @@ export default function Listausuario() {
                                     <td>{usu.id}</td>
                                     <td>{usu.nome}</td>
                                     <td>{usu.email}</td>
+                                    
                                     <td className='botoes'>
                                         <Link to={`/editarusuario/${usu.id}`}>
 

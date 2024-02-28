@@ -67,7 +67,7 @@ export default function Listarsaida() {
             </div>
 
             <div className='principal'>
-                <h1>Lista de Saida</h1>
+                <h1>Lista de Saída</h1>
                 <Link to="/cadastrosaida" className='btn-novo'>Novo Cadastro</Link>
                 <table>
                     <thead>
@@ -75,8 +75,8 @@ export default function Listarsaida() {
                             <th>Id</th>
                             <th>produto</th>
                             <th>quantidade</th>
-                            <th>valor unitario</th>
-                            <th>data saida</th>
+                            <th>valor unitário</th>
+                            <th>saída</th>
                             <th></th>
                             <th></th>
                         </tr>

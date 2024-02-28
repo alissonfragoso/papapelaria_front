@@ -75,8 +75,8 @@ export default function Listarentrada() {
                             <th>Id</th>
                             <th>produto</th>
                             <th>quantidade</th>
-                            <th>valor unitario</th>
-                            <th>data entrada</th>
+                            <th>valor unitário</th>
+                            <th>entrada</th>
                             <th></th>
                             <th></th>
                         </tr>

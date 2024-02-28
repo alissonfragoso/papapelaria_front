@@ -132,7 +132,11 @@ select,option{
     flex-direction: row;
     margin-top: 20px;
     justify-content: space-around;
+    
 }
+
+
+
 
 .form-container {
     height: 80vh;

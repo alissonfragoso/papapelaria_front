@@ -32,21 +32,39 @@ export default function Editarusuario() {
     }, [])
     async function mostrardados(idu) {
         let listaUser = JSON.parse(localStorage.getItem("cd-produto"));
+    
+        if (listaUser) {
+            listaUser
+                .filter(value => value.id == idu)
+                .map(value => {
+                    setStatus(value.status);
+                    setDescricao(value.descricao);
+                    setEstoque_minimo(value.estoque_minimo);
+                    setEstoque_maximo(value.estoque_maximo);
+                });
+        }
+    }
+    
 
-        listaUser.
-            filter(value => value.id == idu).
-            map(value => {
+    // ..........................................................................................
+    //{ codigo errado
+    // async function mostrardados(idu) {
+    //     let listaUser = JSON.parse(localStorage.getItem("cd-produto"));
+
+    //     listaUser.
+    //         filter(value => value.id == idu).
+    //         map(value => {
                 
-                setStatus(value.status);
-                setDescricao(value.descricao);
-                setEstoque_minimo(value.estoque_minimo);
-                setEstoque_maximo(value.estoque_maximo);
+    //             setStatus(value.status);
+    //             setDescricao(value.descricao);
+    //             setEstoque_minimo(value.estoque_minimo);
+    //             setEstoque_maximo(value.estoque_maximo);
                
 
 
-            })
-    }
-
+    //         })
+    // }
+// ...........................................................................................
 
 
     function salvardados(e) {
@@ -113,7 +131,7 @@ export default function Editarusuario() {
                         />
                        
 
-                        <div className='acao'>
+                        <div className='acao' >
                             <button className='btn-save'>
                                 <FaSave />
                                 Salvar
