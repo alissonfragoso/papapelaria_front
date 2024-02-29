@@ -30,8 +30,8 @@ export default function Listausuario() {
         //setBanco(JSON.parse(localStorage.getItem("cd-usuarios") || "[]"));
         api.get('/usuario')
         .then(res=>{
-          console.log(res.data)
-          setBanco(res.data)
+          console.log(res.data.usuarios)
+          setBanco(res.data.usuarios)
         })
     }
 
@@ -43,10 +43,18 @@ export default function Listausuario() {
                 {
                     label: 'Sim',
                     onClick: () => {
-                        let dadosnovos = banco.filter(item => item.id !== id);
-                        localStorage.setItem("cd-usuarios", JSON.stringify(dadosnovos));
-                        setBanco(dadosnovos); // Atualiza o estado com os dados filtrados
-                        alert(`Você apagou o usuário id:${id}`);
+                        // let dadosnovos = banco.filter(item => item.id !== id);
+                        // localStorage.setItem("cd-usuarios", JSON.stringify(dadosnovos));
+                        // setBanco(dadosnovos); // Atualiza o estado com os dados filtrados
+                        api.delete(`/usuario/${id}`)
+                        .then(res=>{
+                            if(res.status==200){
+                                alert(`Você apagou o usuário id:${id}`);
+                                mostrardados();
+                            }else{
+                                alert("vish  deu B.O no servidor")
+                            }
+                        })
                     }
 
                 },
