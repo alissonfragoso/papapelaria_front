@@ -7,6 +7,7 @@ import { MdCancel } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
 import { useNavigate, useParams } from 'react-router-dom';
 import Head from '../../componentes/Head';
+import api from '../../server/api';
 
 export default function Editarusuario() {
     const { id } = useParams(); // Correção aqui
@@ -14,38 +15,57 @@ export default function Editarusuario() {
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
-
+    const usuario={
+        id,
+        nome,
+        email,
+        senha
+    }
     useEffect(() => {
         mostrardados(id); // Correção aqui
-    }, [id]); // Correção aqui
+    }, []); // Correção aqui
 
     async function mostrardados(idu) {
-        let listaUser = JSON.parse(localStorage.getItem("cd-usuarios"));
-        const usuario = listaUser.find(user => user.id === idu); // Encontra o usuário pelo ID
-        if (usuario) {
-            setNome(usuario.nome);
-            setEmail(usuario.email);
-            setSenha(usuario.senha);
-        }
+        // let listaUser = JSON.parse(localStorage.getItem("cd-usuarios"));
+        // const usuario = listaUser.find(user => user.id === idu); // Encontra o usuário pelo ID
+        // if (usuario) {
+        //     setNome(usuario.nome);
+        //     setEmail(usuario.email);
+        //     setSenha(usuario.senha);
+        // }
+        api.get(`/usuario/${idu}`)
+            .then(res => {
+                if (res.status === 200) {
+                    setNome(res.data.usuario[0].nome);
+                    setEmail(res.data.usuario[0].email);
+                    setSenha(res.data.usuario[0].senha);
+                }
+            })
     }
 
     function salvardados(e) {
         e.preventDefault();
         if (nome && email && senha) { // Verifica se os campos não estão vazios
-            const usuario = { id, nome, email, senha };
-            let listaUser = JSON.parse(localStorage.getItem("cd-usuarios")) || [];
-            const index = listaUser.findIndex(user => user.id === id);
-            if (index !== -1) {
-                listaUser[index] = usuario;
-                localStorage.setItem("cd-usuarios", JSON.stringify(listaUser));
-                alert("Usuário salvo com sucesso");
-                navigate('/listausuario');
-            } else {
-                alert("Usuário não encontrado");
-            }
+            // const usuario = { id, nome, email, senha };
+            // let listaUser = JSON.parse(localStorage.getItem("cd-usuarios")) || [];
+            // const index = listaUser.findIndex(user => user.id === id);
+            // if (index !== -1) {
+            //     listaUser[index] = usuario;
+            //     localStorage.setItem("cd-usuarios", JSON.stringify(listaUser));
+            //     alert("Usuário salvo com sucesso");
+            api.put('/usuario', usuario,
+                { headers: { "Content-Type": "application/json" } })
+
+                .then(function (response) {
+                    console.log(response.data)
+                    alert(response.data.mensagem);
+                    navigate('/listausuario');
+                })
+
         } else {
-            alert("Verifique! Há campos vazios!");
+            alert("Usuário não encontrado");
         }
+
     }
 
     return (
