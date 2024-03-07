@@ -1,12 +1,15 @@
 import './styles.css';
-import Logo from '../../assets/img/logo.jpg';
-import{useNavigate} from 'react-router-dom';
 import { useState } from 'react';
+import Logo from '../../assets/img/logo.jpg';
+import {  useNavigate } from 'react-router-dom';
 import api from '../../server/api';
-import React from 'react';
+
+
+
+
 
 export default function Logon(){
-    
+
     const navigate = useNavigate();
     const[email,setEmail]=useState("");
     const[senha,setSenha]=useState("");
@@ -19,11 +22,11 @@ export default function Logon(){
         // let dadosnovos = banco.filter(item => item.email === email && item.senha === senha);
         
         
-        api.post("usuario/logon",{email,senha})
+        api.post("usuario/login",{email,senha})
    
             .then(response=>{
             
-                if(response.status===200){
+                if(response.status==200){
                     alert(response.data.mensagem)
                     navigate('/dashboard');
                 }
