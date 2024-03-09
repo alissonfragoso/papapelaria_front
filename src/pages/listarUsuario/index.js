@@ -30,8 +30,8 @@ export default function Listausuario() {
         //setBanco(JSON.parse(localStorage.getItem("cd-usuarios") || "[]"));
         api.get('/usuario')
         .then(res=>{
-          console.log(res.data.usuarios)
-          setBanco(res.data.usuarios)
+          console.log(res.data.usuario)
+          setBanco(res.data.usuario)
         })
     }
 

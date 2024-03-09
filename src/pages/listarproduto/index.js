@@ -4,6 +4,8 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { Link } from 'react-router-dom';
+import api from '../../server/api';
+
 
 export default function Listarproduto() {
     const [banco, setBanco] = useState([]);
@@ -12,8 +14,12 @@ export default function Listarproduto() {
         mostrardados();
     }, []);
 
-    function mostrardados() {
-        setBanco(JSON.parse(localStorage.getItem("cd-produtos") || "[]"));
+    function mostrardados(){
+        api.get('/produto')
+        .then(res=>{
+          console.log(res.data.produto)
+          setBanco(res.data.produto)
+        })
      
         
     }
@@ -26,10 +32,20 @@ export default function Listarproduto() {
                 {
                     label: 'Sim',
                     onClick: () => {
-                        let dadosnovos = banco.filter(item => item.id !== id);
-                        localStorage.setItem("cd-produtos", JSON.stringify(dadosnovos));
-                        setBanco(dadosnovos);
-                        alert(`Você apagou o produto id:${id}`);
+                        // let dadosnovos = banco.filter(item => item.id !== id);
+                        // localStorage.setItem("cd-produtos", JSON.stringify(dadosnovos));
+                        // setBanco(dadosnovos);
+                        // alert(`Você apagou o produto id:${id}`);
+
+                        api.delete(`/produto/${id}`)
+                        .then(res=>{
+                            if(res.status==200){
+                                alert(`Você apagou o produto id:${id}`);
+                                mostrardados();
+                            }else{
+                                alert("vish  deu B.O no servidor")
+                            }
+                        })
                     }
                 },
                 {

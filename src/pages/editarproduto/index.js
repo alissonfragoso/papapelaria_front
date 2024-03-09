@@ -6,8 +6,9 @@ import { MdCancel } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
 import { useNavigate, useParams } from 'react-router-dom';
 import Head from '../../componentes/Head';
+import api from '../../server/api';
 
-export default function Editarusuario() {
+export default function Editarproduto() {
     let { id } = useParams();
     const navigate = useNavigate();
     const [status, setStatus] = useState("");
@@ -26,25 +27,31 @@ export default function Editarusuario() {
     useEffect(() => {
 
         mostrardados(id);
-
-
-
     }, [])
+
     async function mostrardados(idu) {
-        let listaUser = JSON.parse(localStorage.getItem("cd-produto"));
-    
-        if (listaUser) {
-            listaUser
-                .filter(value => value.id == idu)
-                .map(value => {
-                    setStatus(value.status);
-                    setDescricao(value.descricao);
-                    setEstoque_minimo(value.estoque_minimo);
-                    setEstoque_maximo(value.estoque_maximo);
-                });
-        }
+        // let listaUser = JSON.parse(localStorage.getItem("cd-produto"));
+        // listaUser
+        //     .filter(value => value.id == idu)
+        //     .map(value => {
+        //         setStatus(value.status);
+        //         setDescricao(value.descricao);
+        //         setEstoque_minimo(value.estoque_minimo);
+        //         setEstoque_maximo(value.estoque_maximo);
+        //     });
+        // if (listaUser) {
+            api.get(`/produto/${idu}`)
+                .then(res => {
+                    if (res.status === 200) {
+                        setStatus(res.data.produto[0].status);
+                        setDescricao(res.data.produto[0].descricao);
+                        setEstoque_minimo(res.data.produto[0].estoque_minimo);
+                        setEstoque_maximo(res.data.produto[0].estoque_maximo);
+                    }
+                })
+       
     }
-    
+
 
     // ..........................................................................................
     //{ codigo errado
@@ -54,49 +61,50 @@ export default function Editarusuario() {
     //     listaUser.
     //         filter(value => value.id == idu).
     //         map(value => {
-                
+
     //             setStatus(value.status);
     //             setDescricao(value.descricao);
     //             setEstoque_minimo(value.estoque_minimo);
     //             setEstoque_maximo(value.estoque_maximo);
-               
+
 
 
     //         })
     // }
-// ...........................................................................................
+    // ...........................................................................................
 
 
     function salvardados(e) {
         e.preventDefault();
-        let i = 0;
-        if (status === "")
-            i++;
-        else if (descricao === "")
-            i++;
-        else if (estoque_minimo === "" || estoque_minimo === 0)
-            i++;
-        else if (estoque_maximo === "" || estoque_maximo === 0)
-            i++;
-        if (i === 0) {
-            const banco = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
-            let dadosnovos = banco.filter(item => item.id !== id);
-            dadosnovos.push(produto);
-           
-            localStorage.setItem("cd-produtos",JSON.stringify(dadosnovos));
-            alert("Produto salvo com sucesso");
-            navigate('/listarproduto');
-        
+        if (status && descricao && estoque_minimo && estoque_maximo) { // Verifica se os campos não estão vazios
+            // const usuario = { id, nome, email, senha };
+            // let listaUser = JSON.parse(localStorage.getItem("cd-usuarios")) || [];
+            // const index = listaUser.findIndex(user => user.id === id);
+            // if (index !== -1) {
+            //     listaUser[index] = usuario;
+            //     localStorage.setItem("cd-usuarios", JSON.stringify(listaUser));
+            //     alert("Usuário salvo com sucesso");
+            api.put('/produto', produto,
+                { headers: { "Content-Type": "application/json" } })
+
+                .then(function (response) {
+                    console.log(response.data)
+                    alert(response.data.mensagem);
+                    navigate('/listarproduto');
+                })
+
         } else {
-            alert("Verifique! Há campos vazios!")
+            alert("Produto não encontrado");
         }
+
     }
+    
 
     return (
         <div className="dashboard-container">
 
             <div className='menu'>
-                
+
                 <Menu />
 
             </div>
@@ -127,9 +135,9 @@ export default function Editarusuario() {
                             value={estoque_maximo}
                             onChange={e => setEstoque_maximo(e.target.value)}
                             placeholder='Estoque maximo'
-                            
+
                         />
-                       
+
 
                         <div className='acao' >
                             <button className='btn-save'>
