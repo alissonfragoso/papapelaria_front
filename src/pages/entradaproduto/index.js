@@ -16,7 +16,7 @@ export default function Cadastroentrada() {
   const [qtde, setQtde] = useState("");
   const [valor_unitario, setValor_unitario] = useState("");
   const [data_entrada, setData_entrada] = useState("");
-  const [produto, setProduto] = useState([]);
+  const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
     mostrarDados();
@@ -28,7 +28,7 @@ export default function Cadastroentrada() {
     qtde,
     valor_unitario,
     data_entrada
-}
+  }
 
 
 
@@ -39,7 +39,7 @@ export default function Cadastroentrada() {
     api.get(`/produto`,
       { headers: { "Content-Type": "application/json" } })
       .then(function (response) {
-        setProduto(response.data.produto);
+        setProdutos(response.data.produto);
       })
 
   }
@@ -53,14 +53,14 @@ export default function Cadastroentrada() {
     }
 
     api.post('/entrada', entrada,
-    { headers: { "Content-Type": "application/json" } })
-    .then(function (response) {
+      { headers: { "Content-Type": "application/json" } })
+      .then(function (response) {
         console.log(response.data)
         alert(response.data.mensagem);
-      navigate('/listarentrada');
-    }
-    )
-   
+        navigate('/listarentrada');
+      }
+      )
+
   }
 
 
@@ -81,7 +81,7 @@ export default function Cadastroentrada() {
 
               <option>Selecione um produto</option>
 
-              {produto.map(linha => {
+              {produtos.map(linha => {
                 return (
                   <option value={linha.id}>{linha.descricao}</option>
                 )

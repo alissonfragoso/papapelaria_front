@@ -136,8 +136,10 @@ import api from '../../server/api';
 
 
 export default function Listarentrada() {
+ 
     
     const [entrada, setEntrada] = useState([]);
+
 
     useEffect(() => {
         mostrarDados();
@@ -145,9 +147,10 @@ export default function Listarentrada() {
 
     function mostrarDados() {
 
-        api.get("/entrada")
+        api.get(`/entrada`)
             .then(res => {
-                setEntrada(res.data);
+                setEntrada(res.data.entrada);
+                console.log(res.data.entrada)
             })
             .catch(error => {
                 console.error("Erro ao buscar entradas:", error);
@@ -207,7 +210,7 @@ export default function Listarentrada() {
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>id_produto</th>
+                            <th>descrição</th>
                             <th>produto</th>
                             <th>quantidade</th>
                             <th>valor unitário</th>
@@ -220,7 +223,7 @@ export default function Listarentrada() {
                         {entrada.map(entrada => (
                             <tr key={entrada.id}>
                                 <td>{entrada.id}</td>
-                                <td>{entrada.id_produto}</td>
+                                <td>{entrada.descricao}</td>
                                 <td>{entrada.descricao}</td>
                                 <td>{entrada.qtde}</td>
                                 <td>{entrada.valor_unitario}</td>

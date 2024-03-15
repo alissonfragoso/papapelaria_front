@@ -8,7 +8,7 @@ import { MdCancel } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
 import {useNavigate} from 'react-router-dom';
 import Head from '../../componentes/Head';
-
+import api from '../../server/api';
 
 
 
@@ -18,10 +18,10 @@ export default function Cadastrosaida(){
   const [qtde,setQtde]  = useState("");
   const [valor_unitario,setValor_unitario]  = useState("");
   const [data_saida,setData_saida]  = useState("");
-  const [produto,setProduto] = useState([]);
+  const [produto,setProdutos] = useState([]);
 
   
-  const entrada={
+  const saida={
       id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
       id_produto,
       qtde,
@@ -31,60 +31,42 @@ export default function Cadastrosaida(){
 
 
 
-  // function atualizarEstoque(idProduto, quantidade, valor) {
+  // function atualizarEstoque(id_Produto, quantidade, valor) {
   //   const estoque = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
-  //   const produtoExistente = estoque.find(item => item.id_produto === idProduto);
-
-  //   if (produtoExistente) {
-  //     produtoExistente.qtde += Number(quantidade);
+  
+  //   if (Array.isArray(estoque)) { // Verifica se estoque é um array
+  //     const produtoExistente = estoque.find(item => item.id_produto === id_Produto);
+  
+  //     if (produtoExistente) {
+  //       const soma = parseFloat(produtoExistente.qtde) + parseFloat(quantidade);
+  //       const dadosNovos = estoque.map(item => {
+  //         if (item.id_produto === id_Produto) {
+  //           return {
+  //             id: item.id,
+  //             id_produto: item.id_produto,
+  //             qtde: soma,
+  //             valor_unitario: valor
+  //           };
+  //         } else {
+  //           return item;
+  //         }
+  //       });
+  //       localStorage.setItem("cd-estoques", JSON.stringify(dadosNovos));
+  //     } else {
+  //       const dadosEstoque = {
+  //         id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
+  //         id_produto,
+  //         qtde: parseFloat(quantidade),
+  //         valor_unitario: valor
+  //       };
+  //       estoque.push(dadosEstoque);
+  //       localStorage.setItem("cd-estoques", JSON.stringify(estoque));
+  //     }
   //   } else {
-  //     estoque.push({
-  //       id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
-  //       id_produto,
-  //       qtde: quantidade,
-  //       valor
-  //     });
+  //     // Handle caso estoque não seja um array (pode ser null ou undefined)
+  //     console.error("O localStorage não contém um array válido para cd-estoques.");
   //   }
-
-  //   localStorage.setItem("cd-estoques", JSON.stringify(estoque));
   // }
-
-  function atualizarEstoque(id_Produto, quantidade, valor) {
-    const estoque = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
-  
-    if (Array.isArray(estoque)) { // Verifica se estoque é um array
-      const produtoExistente = estoque.find(item => item.id_produto === id_Produto);
-  
-      if (produtoExistente) {
-        const soma = parseFloat(produtoExistente.qtde) + parseFloat(quantidade);
-        const dadosNovos = estoque.map(item => {
-          if (item.id_produto === id_Produto) {
-            return {
-              id: item.id,
-              id_produto: item.id_produto,
-              qtde: soma,
-              valor_unitario: valor
-            };
-          } else {
-            return item;
-          }
-        });
-        localStorage.setItem("cd-estoques", JSON.stringify(dadosNovos));
-      } else {
-        const dadosEstoque = {
-          id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
-          id_produto,
-          qtde: parseFloat(quantidade),
-          valor_unitario: valor
-        };
-        estoque.push(dadosEstoque);
-        localStorage.setItem("cd-estoques", JSON.stringify(estoque));
-      }
-    } else {
-      // Handle caso estoque não seja um array (pode ser null ou undefined)
-      console.error("O localStorage não contém um array válido para cd-estoques.");
-    }
-  }
   
   
   
@@ -94,36 +76,29 @@ useEffect(()=>{
 
   function salvardados(e){
     e.preventDefault();
-
-  let i=0;
-  if(id_produto==="")
-  i++;
- else if(qtde==="" || qtde===0)
-  i++;
- else if(valor_unitario==="" || valor_unitario===0)
- i++;
- else if(data_saida==="")
- i++;
-if(i===0)
- {
-   const  banco =JSON.parse(localStorage.getItem("cd-saida")|| "[]");
-  
-   banco.push(entrada);
- 
-    localStorage.setItem("cd-saida",JSON.stringify(banco));
    
-    atualizarEstoque(id_produto,qtde,valor_unitario) 
- 
-    alert("Sainda salvo com sucesso");
-    navigate('/listarsaida');
+    if (!id_produto || !qtde || !valor_unitario || !data_saida) {
+      alert("Todos os campos são obrigatórios");
+      return;
+    }
 
- }else{
-  alert("Verifique! Há campos vazios!")
- }
+    api.post('/saida', saida,
+      { headers: { "Content-Type": "application/json" } })
+      .then(function (response) {
+        console.log(response.data)
+        alert(response.data.mensagem);
+        navigate('/listarsaida');
+      }
+      )
   }
   function mostrarproduto(){
    
-     setProduto(JSON.parse(localStorage.getItem("cd-produtos") || "[]"));
+    api.get(`/produto`,
+    { headers: { "Content-Type": "application/json" } })
+    .then(function (response) {
+      setProdutos(response.data.produto);
+    })
+
  
     }
   return(
