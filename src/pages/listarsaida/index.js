@@ -5,7 +5,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { Link } from 'react-router-dom';
 import api from '../../server/api';
-
+import moment from 'moment';
 
 export default function Listarsaida() {
     const [banco, setBanco] = useState([]);
@@ -17,13 +17,17 @@ export default function Listarsaida() {
     function mostrardados() {
         // setBanco(JSON.parse(localStorage.getItem("cd-saida") || "[]"));
 
-        api.get('/produto')
+        api.get('/saida')
             .then(res => {
-                console.log(res.data.produto)
-                setBanco(res.data.produto)
+                console.log(res.data.saida)
+                setBanco(res.data.saida)
             })
     }
 
+    function formatarData(data){
+        return moment(data).format('DD/MM/YYYY');
+    }
+    
     const apagar = (id) => {
         confirmAlert({
             title: 'Excluir Produto',
@@ -36,7 +40,7 @@ export default function Listarsaida() {
                         // localStorage.setItem("cd-saida", JSON.stringify(dadosnovos));
                         // setBanco(dadosnovos);
                         // alert(`Você apagou o produto id:${id}`);
-                        api.delete(`/produto/${id}`)
+                        api.delete(`/saida/${id}`)
                             .then(res => {
                                 if (res.status == 200) {
                                     alert(`Você apagou o produto id:${id}`);
@@ -57,21 +61,21 @@ export default function Listarsaida() {
 
 
 
-    function mostrarnome(idproduto) {
-        let nome = "";
-        const Listarproduto = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
+    // function mostrarnome(idproduto) {
+    //     let nome = "";
+    //     const Listarproduto = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
 
-        Listarproduto.
-            filter(value => value.id == idproduto).
-            map(value => {
-
-
-                nome = value.descricao;
+    //     Listarproduto.
+    //         filter(value => value.id == idproduto).
+    //         map(value => {
 
 
-            })
-        return nome;
-    }
+    //             nome = value.descricao;
+
+
+    //         })
+    //     return nome;
+    // }
 
     return (
         <div className="dashboard-container">
@@ -102,10 +106,10 @@ export default function Listarsaida() {
                             banco.map((usu) => (
                                 <tr key={usu.id}>
                                     <td>{usu.id}</td>
-                                    <td>{(mostrarnome)(usu.id_produto)}</td>
+                                    <td>{usu.id_produto}</td>
                                     <td>{usu.qtde}</td>
                                     <td>{usu.valor_unitario}</td>
-                                    <td>{usu.data_saida}</td>
+                                    <td>{formatarData(usu.data_saida)}</td>
 
                                     <td className='botoes'>
                                         <FiTrash

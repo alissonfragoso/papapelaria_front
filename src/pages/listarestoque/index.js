@@ -4,6 +4,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { Link } from 'react-router-dom';
+import api from '../../server/api';
 
 export default function Listarestoque() {
     const [banco, setBanco] = useState([]);
@@ -13,26 +14,31 @@ export default function Listarestoque() {
     }, []);
 
     function mostrardados() {
-        const dadosLocalStorage = JSON.parse(localStorage.getItem("cd-estoques")) || [];
-        setBanco(dadosLocalStorage);
+      
+        api.get('/estoque')
+        .then(res => {
+            console.log(res.data.estoque)
+            setBanco(res.data.estoque)
+        })
+       
        
     }
     
-    function mostrarnome(idproduto) {
-        let nome = "";
-        const Listarproduto = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
+    // function mostrarnome(idproduto) {
+    //     let nome = "";
+    //     const Listarproduto = JSON.parse(localStorage.getItem("cd-produtos") || "[]");
 
-        Listarproduto.
-            filter(value => value.id == idproduto).
-            map(value => {
-
-
-                nome = value.descricao;
+    //     Listarproduto.
+    //         filter(value => value.id == idproduto).
+    //         map(value => {
 
 
-            })
-        return nome;
-    }
+    //             nome = value.descricao;
+
+
+    //         })
+    //     return nome;
+    // }
 
     return (
         <div className="dashboard-container">
@@ -61,7 +67,7 @@ export default function Listarestoque() {
                         banco.map((usu) => (
                             <tr key={usu.id}>
                                 <td>{usu.id}</td>
-                                <td>{(mostrarnome)(usu.id_produto)}</td>
+                                <td>{usu.id_produto}</td>
                                 <td>{usu.qtde}</td>
                                 <td>{usu.valor_unitario}</td>
                                 

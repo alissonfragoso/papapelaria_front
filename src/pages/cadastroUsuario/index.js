@@ -52,9 +52,9 @@ export default function Cadastrousuario() {
             .then(function(response){
                 console.log(response.data)
                 alert(response.data.mensagem);
+                navigate('/listausuario');
             }
             )
-            navigate('/listausuario');
         }
     }
     
