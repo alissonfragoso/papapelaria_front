@@ -76,7 +76,8 @@ export default function Editarproduto() {
 
     function salvardados(e) {
         e.preventDefault();
-        if (status && descricao && estoque_minimo && estoque_maximo) { // Verifica se os campos não estão vazios
+        if (status && descricao && estoque_minimo && estoque_maximo) {
+             // Verifica se os campos não estão vazios
             // const usuario = { id, nome, email, senha };
             // let listaUser = JSON.parse(localStorage.getItem("cd-usuarios")) || [];
             // const index = listaUser.findIndex(user => user.id === id);

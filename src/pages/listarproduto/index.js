@@ -11,10 +11,10 @@ export default function Listarproduto() {
     const [banco, setBanco] = useState([]);
 
     useEffect(() => {
-        mostrardados();
+        mostrarDados();
     }, []);
 
-    function mostrardados(){
+    function mostrarDados(){
         api.get('/produto')
         .then(res=>{
           console.log(res.data.produto)
@@ -41,7 +41,7 @@ export default function Listarproduto() {
                         .then(res=>{
                             if(res.status==200){
                                 alert(`Você apagou o produto id:${id}`);
-                                mostrardados();
+                                mostrarDados();
                             }else{
                                 alert("vish  deu B.O no servidor")
                             }

@@ -6,7 +6,6 @@ import { MdCancel } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import Head from '../../componentes/Head';
-
 import api from '../../server/api';
 
 

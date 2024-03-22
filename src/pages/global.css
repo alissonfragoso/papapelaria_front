@@ -4,7 +4,7 @@
 }
 
 .dashboard-container {
-    background-color: #6d8d8c;
+    background-color: #6c8a89;
     height: 100vh;
     display: flex;
     flex-direction: row;
@@ -20,7 +20,7 @@
 
 .principal {
     width: 80%;
-    background-color: #f8f8f8f8;
+    background-color: #fffffff8;
     margin: 5px;
     padding: 5px;
 }
@@ -31,14 +31,18 @@ table {
 }
 
 td {
-    border: solid 0.5px #a4b5d8;
+    border: solid 0.9px #1100ff;
+    text-align: center;
 
 }
 
 .botoes:hover {
     cursor: pointer;
+
     background-color: #ccccccf8;
+
 }
+
 
 .btn-novo {
     padding: 10px;
@@ -48,19 +52,24 @@ td {
     border: solid 0px;
     margin-bottom: 10px;
     text-decoration: none;
-    display: flex;
-    width: 10%;
+    display: inline-block;
+    /* Alterado para inline-block para animação funcionar corretamente */
+    transition: background-color 0.3s ease;
+    /* Adicionando transição suave na cor de fundo */
+}
 
-    
-
+.btn-novo:hover {
+    background-color: #0056b3;
+    /* Cor de fundo alterada quando o mouse passa por cima */
 }
 
 
 
 
+/* -------------------formulario------------------- */
+select,
+option {
 
-select,option{
-    
     outline: 0;
     margin-bottom: 10px;
 
@@ -132,11 +141,8 @@ select,option{
     flex-direction: row;
     margin-top: 20px;
     justify-content: space-around;
-    
+
 }
-
-
-
 
 .form-container {
     height: 80vh;
@@ -159,16 +165,53 @@ select,option{
     color: #333;
     border: 1px solid #dcdce6;
     border-radius: 8px;
-    
+
 }
 
 .form-cadastro input:focus {
-    box-shadow: 0px 0px 0px 0px  ;
+    box-shadow: 0px 0px 0px 0px;
     border: 1px solid #dcdce6;
     outline: 0;
 }
-h1,h2{
+
+h1,
+h2 {
     color: darkslategrey;
     text-align: center;
     padding-top: 2%;
 }
+
+/* Estilizando o seletor */
+select {
+    /* Tamanho */
+    width: 359px;
+    height: 40px;
+    /* Espaçamento */
+    padding: 3px;
+    /* Fonte */
+    font-size: 14px;
+
+    color: #000000;
+    background-color: #ffffff;
+    /* Borda */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    /* Estilo do cursor */
+    cursor: pointer;
+}
+
+/* Estilizando o seletor quando está focado */
+select:focus {
+    outline: none;
+    /* Removendo a borda de foco padrão */
+    border-color: #d9d9d9;
+    /* Mudando a cor da borda quando está focado */
+}
+
+/* Estilizando o seletor quando passa o mouse por cima */
+select:hover {
+    background-color: #d1d6dc;
+    /* Mudando a cor de fundo ao passar o mouse por cima */
+}
+
+/* -------------------formulario------------------- */

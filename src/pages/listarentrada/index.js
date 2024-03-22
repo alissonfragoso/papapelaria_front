@@ -204,7 +204,7 @@ export default function Listarentrada() {
             </div>
 
             <div className='principal'>
-                <h1>Lista de Estoques</h1>
+                <h1>Lista de Entrada</h1>
                 <Link to="/entradaproduto" className='btn-novo'>Novo Cadastro</Link>
                 <table>
                     <thead>

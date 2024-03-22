@@ -51,10 +51,10 @@ export default function CadastroProduto() {
                 .then(function (response) {
                     console.log(response.data)
                     alert(response.data.mensagem);
+                    alert("Produto salvo com sucesso");
+                    navigate('/listarproduto');
                 }
                 )
-                alert("Produto salvo com sucesso");
-                navigate('/listarproduto');
 
         } else {
             alert("Verifique! Há campos vazios!")

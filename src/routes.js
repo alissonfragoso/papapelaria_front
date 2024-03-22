@@ -5,6 +5,7 @@ import Logon from './pages/logon';
 import Dashboard from './pages/dashboard';
 import Cadastrousuario from './pages/cadastroUsuario';
 import CadastroProduto from './pages/cadastroProduto';
+import Entradaproduto from './pages/entradaproduto';
 
 import Cadastrosaida from './pages/cadastrosaida';
 
@@ -15,7 +16,7 @@ import Listausuario from './pages/listarUsuario';
 import Listarproduto from './pages/listarproduto';
 
 import Listarentrada from './pages/listarentrada';
-import Entradaproduto from './pages/entradaproduto';
+
 import Listarestoque from './pages/listarestoque';
 import Listarsaida from './pages/listarsaida';
 

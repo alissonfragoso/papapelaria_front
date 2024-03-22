@@ -109,15 +109,9 @@ useEffect(()=>{
         <Menu />
         </div>
         <div className='principal'>
-        <Head title="Cadastro de Sainda" />
+        <Head title="Cadastro de Saída" />
         <div className='form-container'>
         <form className='form-cadastro' onSubmit={salvardados} >
-            <input 
-            type='text'
-            value={id_produto}
-            onChange={e=>setId_produto(e.target.value)}
-             placeholder='Digite o id do produto'
-              />
               <select value={id_produto} onChange={e=>setId_produto(e.target.value)}  >
                 <option>Selecione um produto</option>
                 {
@@ -128,6 +122,12 @@ useEffect(()=>{
                   })
                 }
               </select>
+            <input 
+            type='text'
+            value={id_produto}
+            onChange={e=>setId_produto(e.target.value)}
+             placeholder='Digite o id do produto'
+              />
             <input 
                 type='number' 
                 value={qtde}
