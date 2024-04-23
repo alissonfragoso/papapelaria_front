@@ -15,7 +15,7 @@ import api from '../../server/api';
 export default function Cadastrosaida(){
   const navigate =useNavigate();
   const [id_produto,setId_produto]  = useState("");
-  const [qtde,setQtde]  = useState("");
+  const [quantidade,setQuantidade]  = useState("");
   const [valor_unitario,setValor_unitario]  = useState("");
   const [data_saida,setData_saida]  = useState("");
   const [produto,setProdutos] = useState([]);
@@ -24,7 +24,7 @@ export default function Cadastrosaida(){
   const saida={
       id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
       id_produto,
-      qtde,
+      quantidade,
       valor_unitario,
       data_saida
   }
@@ -77,7 +77,7 @@ useEffect(()=>{
   function salvardados(e){
     e.preventDefault();
    
-    if (!id_produto || !qtde || !valor_unitario || !data_saida) {
+    if (!id_produto || !quantidade || !valor_unitario || !data_saida) {
       alert("Todos os campos são obrigatórios");
       return;
     }
@@ -130,8 +130,8 @@ useEffect(()=>{
               />
             <input 
                 type='number' 
-                value={qtde}
-                onChange={e=>setQtde(e.target.value)}
+                value={quantidade}
+                onChange={e=>setQuantidade(e.target.value)}
                 placeholder='Digite a quantidade'
              />
          

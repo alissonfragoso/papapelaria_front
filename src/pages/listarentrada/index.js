@@ -225,7 +225,7 @@ export default function Listarentrada() {
                                 <td>{entrada.id}</td>
                                 <td>{entrada.descricao}</td>
                                 <td>{entrada.descricao}</td>
-                                <td>{entrada.qtde}</td>
+                                <td>{entrada.quantidade}</td>
                                 <td>{entrada.valor_unitario}</td>
                                 <td>{formatarData(entrada.data_entrada)}</td>
                                 <td className='botoes'>

@@ -12,7 +12,7 @@ import api from '../../server/api';
 export default function Cadastroentrada() {
   const navigate = useNavigate();
   const [id_produto, setId_produto] = useState("");
-  const [qtde, setQtde] = useState("");
+  const [quantidade, setQuantidade] = useState("");
   const [valor_unitario, setValor_unitario] = useState("");
   const [data_entrada, setData_entrada] = useState("");
   const [produtos, setProdutos] = useState([]);
@@ -24,7 +24,7 @@ export default function Cadastroentrada() {
   const entrada = {
     id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
     id_produto,
-    qtde,
+    quantidade,
     valor_unitario,
     data_entrada
   }
@@ -46,7 +46,7 @@ export default function Cadastroentrada() {
   function salvardados(e) {
     e.preventDefault();
 
-    if (!id_produto || !qtde || !valor_unitario || !data_entrada) {
+    if (!id_produto || !quantidade || !valor_unitario || !data_entrada) {
       alert("Todos os campos são obrigatórios");
       return;
     }
@@ -88,7 +88,7 @@ export default function Cadastroentrada() {
 
             </select>
 
-            <input type='number' value={qtde} onChange={e => setQtde(e.target.value)} placeholder='Digite a quantidade' />
+            <input type='number' value={quantidade} onChange={e => setQuantidade(e.target.value)} placeholder='Digite a quantidade' />
 
             <input type='number' value={valor_unitario} onChange={e => setValor_unitario(e.target.value)} placeholder='Digite o valor unitário' />
 

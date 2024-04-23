@@ -124,7 +124,7 @@ export default function Listarestoque() {
                                 <td>{usu.id}</td>
                                 <td>{usu.id_produto}</td>
                                 <td>{usu.descricao}</td>
-                                <td>{usu.qtde}</td>
+                                <td>{usu.quantidade}</td>
                                 <td>{usu.valor_unitario}</td>
                                 
                             </tr>

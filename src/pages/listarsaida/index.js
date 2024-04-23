@@ -107,7 +107,7 @@ export default function Listarsaida() {
                                 <tr key={usu.id}>
                                     <td>{usu.id}</td>
                                     <td>{usu.id_produto}</td>
-                                    <td>{usu.qtde}</td>
+                                    <td>{usu.quantidade}</td>
                                     <td>{usu.valor_unitario}</td>
                                     <td>{formatarData(usu.data_saida)}</td>
 
