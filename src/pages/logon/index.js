@@ -1,8 +1,8 @@
 import './styles.css';
 import { useState } from 'react';
-import Logo from '../../assets/img/logo.jpg';
+import Logo from '../../assets/img/capa.png';
 import {  useNavigate } from 'react-router-dom';
-import api from '../../server/api';
+import api from '../../server/api'
 
 
 
@@ -43,27 +43,32 @@ export default function Logon(){
 
    return(
    <div className="logon-container">
-   <div className='logo'>
-      <img src={Logo} />
-   </div>
-   <section className="form">
-       <h1 className='l1'>Faça seu login</h1>
-       <form onSubmit={logar} >
-           <input placeholder="Email" 
-           value={email}
-           onChange={e=>setEmail(e.target.value)}
-           />
-           <input placeholder="Senha" type='password' 
-           value={senha}
-           onChange={e=>setSenha(e.target.value)}
-           />
-            
-            
-           <button className='entrar' type="submit">Entrar</button>
-           <a className='novo' href="/cadastroUsuario">Novo Cadastro</a>
-       </form>
-   </section>
-</div>
+
+             <div className='capa-fundo'>
+                {/* <img src={Logo} /> */}
+             </div>
+
+  <div className='form-pai'>
+        <section className="form">
+            <form onSubmit={logar} >
+            <h1 className='l1'>Faça seu login</h1>
+                <input placeholder="Email" 
+                value={email}
+                onChange={e=>setEmail(e.target.value)}
+                />
+                <input placeholder="Senha" type='password' 
+                value={senha}
+                onChange={e=>setSenha(e.target.value)}
+                />
+                    
+                    
+                <button className='entrar' type="submit">Entrar</button>
+                
+            </form>
+        </section>
+    </div>
+
+    </div>
 
    )
 

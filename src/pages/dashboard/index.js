@@ -13,7 +13,12 @@ export default function Dashboard(){
             <Menu />
         </div>
         <div className='principal'>
-        <h1>Stationery  System <GrSystem /></h1>
+            
+        <h1>
+        <div className='capa'>
+                {/* <img src={Logo} /> */}
+             </div>
+        </h1>
         </div>
         <div >
             

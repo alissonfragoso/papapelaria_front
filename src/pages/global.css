@@ -145,49 +145,56 @@ option {
 }
 
 .form-container {
-    height: 80vh;
+    height: 100vh;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start; /* Alinhar os itens ao topo */
+    padding-top: 10vh; /* Adicionar um espaçamento superior */
 }
 
 .form-cadastro {
-
     background-color: #8ca3a5;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 30px;
+    border-radius: 7px;
     box-shadow: 10px 10px 5px 1px #9caead;
-    align-items: center;
+    width: 85%;
+    max-width: 450px;
+    display: flex;
+    
 }
 
 .form-cadastro input {
-    width: 100%;
+    width: 99%;
     height: 30px;
     color: #333;
     border: 1px solid #dcdce6;
     border-radius: 8px;
-
+    margin-bottom: 10px; /* Adicionar espaçamento entre os inputs */
 }
 
+h1, h2 {
+    color: darkslategrey;
+    text-align: center;
+    margin-bottom: 20px; /* Adicionar espaçamento abaixo dos títulos */
+}
+
+
 .form-cadastro input:focus {
-    box-shadow: 0px 0px 0px 0px;
+    box-shadow: 0.1px 0.1px 1px 1px;
     border: 1px solid #dcdce6;
     outline: 0;
 }
 
-h1,
-h2 {
-    color: darkslategrey;
-    text-align: center;
-    padding-top: 2%;
-}
 
+/* Estilizando o seletor */
 /* Estilizando o seletor */
 select {
     /* Tamanho */
-    width: 359px;
+    width: 104%;
     height: 40px;
+    
     /* Espaçamento */
-    padding: 3px;
+    padding: 5px;
     /* Fonte */
     font-size: 14px;
 
@@ -198,6 +205,8 @@ select {
     border-radius: 10px;
     /* Estilo do cursor */
     cursor: pointer;
+    /* Adicionando transição suave */
+    transition: all 0.20s ease;
 }
 
 /* Estilizando o seletor quando está focado */
@@ -213,5 +222,4 @@ select:hover {
     background-color: #d1d6dc;
     /* Mudando a cor de fundo ao passar o mouse por cima */
 }
-
 /* -------------------formulario------------------- */

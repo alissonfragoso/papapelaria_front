@@ -1,8 +1,9 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
-.dashboard-container{
+
+.dashboard-container {
     background-color: #6d8d8c;
     height: 100vh;
     display: flex;
@@ -10,14 +11,32 @@
     width: 90%;
     margin: auto;
 }
-.menu{
+
+.menu {
     width: 20%;
     background-color: #ffff;
     margin: 6px;
 }
-.principal{
+
+.principal {
     width: 80%;
-    background-color:#ffff;
+    background-color: #ffff;
     margin: 5px;
-    
+    position: relative; /* Adicionei position: relative para garantir que a posição absoluta da capa seja relativa a este elemento */
+}
+
+.capa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: url('../../assets/img/1.png');
+    background-size: contain; /* Alterei para contain para garantir que a imagem seja totalmente visível sem distorção */
+    background-repeat: no-repeat; /* Adicionei para evitar repetição da imagem */
+    background-position: center; /* Centralizei a imagem */
 }

@@ -1,57 +1,101 @@
-.logon-container{
+/* Estilos para o contêiner principal do componente de login */
+.logon-container {
+ 
+    min-height: 100vh;
+    /* Alterando para ocupar pelo menos a altura da viewport */
+    display: flex;
+    /* Alterando para flex para permitir o alinhamento vertical */
+   
+}
+
+
+
+.capa-fundo {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    z-index: -1;
+    background-image: url('../../assets/img/capa.png');
+    background-size: cover;
 }
 
-form{
+
+
+/* Estilos para o formulário de login */
+.form-pai {
+    position: relative; /* Define a posição relativa para permitir o posicionamento absoluto dos elementos filhos */
+    z-index: 1; /* Coloca o formulário na frente do logotipo */
+    width: 100%; /* Garante que o formulário ocupe toda a largura do contêiner pai */
+    display: flex; /* Alterando para flex para permitir o alinhamento vertical e horizontal */
+    justify-content: center; /* Centralizando horizontalmente */
+    align-items: center; /* Centralizando verticalmente */
+}
+
+
+/* Estilos para o formulário de login */
+form {
     display: flex;
     flex-direction: column;
-    width: 350px;
-    margin:auto;
+    width: 400px;
+    height: 260px;
+    background-color: #ffffff;
+    padding: 20px;
+    /* Adicionando um preenchimento interno */
+    border-radius: 5px;
+    /* Adicionando um raio de borda */
+    box-shadow: 0px 0px 10px rgba(1, 1, 1, 0.2);
+    /* Adicionando uma sombra */
    
-    
+    /* Adicionando uma margem à direita para separar do outro conteúdo */
+}
 
-}
-.l1{
-    text-align: center;
-    padding:  10px 10px;
-    color: #0056b3;
-}
-input{
-    border: 1px solid #dcdce6;
-    padding: 6px;
-    margin:1px;
+/* Estilos para os campos de entrada */
+input {
+    border: 1px solid #d7d7e8;
+    padding: 10px;
+    margin-bottom: 10px;
     border-radius: 10px;
-    height: 20px;
-    margin-bottom:10px ;
-    
-}
-img{
-    width: 290px;
-    display: flex;
-    
-}
-.logo{
-    display: flex;
-    justify-content: center;
+    height: 40px;
 }
 
-.entrar, .novo {
-    padding: 10px; 
+/* Estilos para o título "Faça seu login" */
+.l1 {
+    text-align: center;
+    color: #0671e4;
+    margin-bottom: 20px;
+    /* Adicionando margem inferior */
+}
+
+/* Estilos para os botões "Entrar" e "Novo" */
+.entrar,
+.novo {
+    padding: 10px;
     background-color: #007bff;
     border-radius: 15px;
     text-decoration: none;
-    color: #ffff;
+    color: #fff;
     width: 100%;
     margin-bottom: 10px;
-    border: #dcdce6;
-    display: inline-block;
-    text-align: center;
-    box-sizing: border-box;
-    transition: background-color 0.5s ease, transform 0.3s ease; 
+    border: none;
+    /* Removendo a borda */
+    cursor: pointer;
+    /* Adicionando cursor indicando interatividade */
+    transition: background-color 0.5s ease, transform 0.3s ease;
 }
 
-.entrar:hover, .novo:hover {
-    background-color: #0056b3;
+/* Estilo do botão "Entrar" quando hover */
+.entrar:hover {
+    background-color: #341ac7;
     transform: scale(1.1);
+}
+
+/* Estilo do link "Novo" */
+.novo {
+    text-decoration: none;
+    text-align: center;
+    /* Centralizando o texto */
+    display: block;
+    /* Convertendo para bloco para ocupar toda a largura */
 }
