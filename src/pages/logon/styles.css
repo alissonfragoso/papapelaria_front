@@ -69,8 +69,10 @@ input {
 }
 
 /* Estilos para os botões "Entrar" e "Novo" */
-.entrar,
-.novo {
+
+
+.entrar {
+    text-decoration: none;
     padding: 10px;
     background-color: #007bff;
     border-radius: 15px;
@@ -85,6 +87,32 @@ input {
     transition: background-color 0.5s ease, transform 0.3s ease;
 }
 
+
+/* Estilos para o link "Faça o cadastro aqui" */
+.tx {
+    color: #007bff; /* Cor do link */
+    text-decoration: none; /* Removendo sublinhado */
+    font-weight: bold; /* Negrito */
+  
+    
+}
+
+.tx:hover::before {
+  
+    position: absolute; /* Posicionando o pseudo-elemento */
+  
+    
+   
+    
+    left: -5px; /* Afastando um pouco da esquerda */
+  
+    z-index: -1; /* Colocando atrás do texto */
+}
+
+.tx:hover {
+    text-decoration:underline ; /* Adicionando sublinhado quando o mouse passa sobre o link */
+}
+
 /* Estilo do botão "Entrar" quando hover */
 .entrar:hover {
     background-color: #341ac7;
@@ -92,10 +120,4 @@ input {
 }
 
 /* Estilo do link "Novo" */
-.novo {
-    text-decoration: none;
-    text-align: center;
-    /* Centralizando o texto */
-    display: block;
-    /* Convertendo para bloco para ocupar toda a largura */
-}
+

@@ -64,6 +64,7 @@ export default function Logon(){
                     
                 <button className='entrar' type="submit">Entrar</button>
                 
+                <a className='tx' href="/cadastroUsuario"><span class="texto">Faça o cadastro</span> aqui</a>
             </form>
         </section>
     </div>
